@@ -7,7 +7,7 @@ pipeline {
         stage('spin up') {
             steps {
                 script {
-                    export
+                    sh "export"
                 }
             }
         }
