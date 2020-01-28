@@ -5,12 +5,10 @@ pipeline {
     stages {
         stage('hello') {
             steps {
-                script {
-                    uname -a
-                    cat /etc/lsb-release
-                    cat /proc/version
-                    cat /etc/lsb-release
-                }
+                sh "uname -a"
+                sh "cat /etc/lsb-release"
+                sh "cat /proc/version"
+                sh "cat /etc/lsb-release"
             }
         }
     }
