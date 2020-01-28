@@ -5,15 +5,15 @@ pipeline {
             steps {
               echo "before retry"
               script {
-                for (job in ['a', 'b', 'c']) {
-                  retry(3) {
-                    echo "retrying for $job."
-                    if (job != 'c') {
-                        echo "failed $job"
+                def i = 0;
+                retry(3) {
+                    echo "retrying for ${i}."
+                    if (i == 0) {
+                        echo "failed $i"
+                        i++
                         throw new Exception()
                     }
-                    echo "success $job"
-                  }
+                    echo "success $i"
                 }
               }
             }
