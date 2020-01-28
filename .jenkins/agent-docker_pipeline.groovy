@@ -6,10 +6,10 @@ pipeline {
         stage('hello') {
             steps {
                 // sh "uname -a"
+                //cat "/proc/version"
+                //cat "/etc/lsb-release"
                 echo "hello"
-                cat "/etc/lsb-release"
-                cat "/proc/version"
-                cat "/etc/lsb-release"
+                sh returnStdout: true, script: 'cat /etc/lsb-release'
             }
         }
     }
