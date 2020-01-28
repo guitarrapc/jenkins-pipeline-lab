@@ -16,9 +16,7 @@ pipeline {
             }
 
             steps {
-                script {
-                    echo "BASE: ${BASE}"
-                }
+                echo "BASE: ${BASE}"
             }
         }
 
@@ -32,8 +30,10 @@ pipeline {
             }
             steps {
                 echo "BASE: ${BASE}"
-                // never run
-                throw new Exception()
+                script {
+                    // never run
+                    throw new Exception()
+                }
             }
 
         }
