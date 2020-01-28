@@ -6,9 +6,7 @@ pipeline {
     stages {
         stage('spin up') {
             steps {
-                script {
-                    sh "export"
-                }
+                sh "export"
             }
         }
 
@@ -20,7 +18,6 @@ pipeline {
             steps {
                 script {
                     echo "BASE: ${BASE}"
-                    throw new Exception()
                 }
             }
         }
@@ -35,6 +32,8 @@ pipeline {
             }
             steps {
                 echo "BASE: ${BASE}"
+                // never run
+                throw new Exception()
             }
 
         }
@@ -51,7 +50,7 @@ pipeline {
 
         stage('when branch master') {
             when {
-                branch "master"
+                branch "origin/master"
             }
             steps {
                 echo "branch match to master"
