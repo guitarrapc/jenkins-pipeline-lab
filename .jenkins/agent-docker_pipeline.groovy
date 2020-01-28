@@ -8,7 +8,7 @@ pipeline {
                 script{
                     echo "hello"
                     cat "/proc/version"
-                    cat "/etc/lsb-release"
+                    //cat "/etc/lsb-release"
                     // sh "uname -a"
                 }
             }
