@@ -1,15 +1,11 @@
 pipeline {
     agent {
-        docker "ubuntu:18.04"
+        docker { image 'node:7-alpine' }
     }
     stages {
-        stage('hello') {
+        stage('Test') {
             steps {
-                // sh "uname -a"
-                //cat "/proc/version"
-                //cat "/etc/lsb-release"
-                echo "hello"
-                sh returnStdout: true, script: 'cat /etc/lsb-release'
+                sh 'node --version'
             }
         }
     }
