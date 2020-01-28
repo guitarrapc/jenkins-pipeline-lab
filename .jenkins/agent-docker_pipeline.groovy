@@ -7,9 +7,9 @@ pipeline {
             steps {
                 // sh "uname -a"
                 echo "hello"
-                sh "cat /etc/lsb-release"
-                sh "cat /proc/version"
-                sh "cat /etc/lsb-release"
+                cat "/etc/lsb-release"
+                cat "/proc/version"
+                cat "/etc/lsb-release"
             }
         }
     }
