@@ -4,22 +4,34 @@ pipeline {
         BASE = "pipeline"
     }
     stages {
-        stage('when environment not match') {
+        stage('spin up') {
             steps {
-                echo "BASE: ${BASE}"
+                script {
+                    export
+                }
+            }
+        }
+
+        stage('when environment not match') {
+            when {
+                environment name: "BASE", value: "pipeline"
             }
 
-            when {
-                environment name: "BASE", value: "stage"
+            steps {
+                script {
+                    echo "BASE: ${BASE}"
+                    throw new Exception()
+                }
             }
         }
 
         stage('when environment match') {
-            environment {
-                BASE = "stage"
-            }
+            // when evaluate before environment
             when {
                 environment name: "BASE", value: "stage"
+            }
+            environment {
+                BASE = "stage"
             }
             steps {
                 echo "BASE: ${BASE}"
