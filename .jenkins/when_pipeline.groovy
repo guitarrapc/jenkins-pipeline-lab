@@ -50,9 +50,11 @@ pipeline {
 
         stage('when branch master') {
             when {
-                branch "origin/master"
+                // only ran when multibranch pipeline. it will never trigger on normal pipeline.
+                branch "master"
             }
             steps {
+                // will be skip on normal pipeline
                 echo "branch match to master"
             }
         }
