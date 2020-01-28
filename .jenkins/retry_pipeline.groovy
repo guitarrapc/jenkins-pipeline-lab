@@ -7,10 +7,12 @@ pipeline {
               script {
                 for (job in ['a', 'b', 'c']) {
                   retry(3) {
-                    echo 'retrying up to 5 times, if fails.'
-                    if (job != "c") {
+                    echo "retrying for $job."
+                    if (job != 'c') {
+                        echo "failed $job"
                         throw new Exception()
                     }
+                    echo "success $job"
                   }
                 }
               }
