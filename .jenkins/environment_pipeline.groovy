@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('hello') {
             steps {
-                echo 'FOO: ${FOO}'
-                echo 'BAR: ${BAR}'
+                echo "FOO: ${FOO}"
+                echo "BAR: ${BAR}"
             }
         }
     }
