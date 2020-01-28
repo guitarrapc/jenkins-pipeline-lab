@@ -6,7 +6,7 @@ pipeline {
                 sh "./scripts/hello.sh"
                 script{
                     OS = sh returnStdout:true, script: "uname -a"
-                    echo ${OS}
+                    print OS
                 }
             }
         }
