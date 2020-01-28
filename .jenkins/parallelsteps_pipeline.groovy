@@ -4,12 +4,12 @@ pipeline {
         stage('hello') {
             steps {
                 parallel(
-                  firstBlock: {
-                    echo "hello1"
-                  },
-                  secondBlock: {
-                    echo "hello2"
-                  }
+                    firstBlock: {
+                        echo "hello1"
+                    },
+                    secondBlock: {
+                        echo "hello2"
+                    }
                 )
             }
         }

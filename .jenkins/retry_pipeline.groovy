@@ -7,7 +7,7 @@ pipeline {
               script {
                 def i = 0;
                 retry(3) {
-                    echo "retrying for ${i}."
+                    echo "trying with ${i}."
                     if (i == 0) {
                         echo "failed $i"
                         i++
