@@ -5,8 +5,8 @@ pipeline {
         quietPeriod(30)
     }
     triggers {
-        cron('H */4 * * 1-5')
-        //pollSCM('H/10 * * * *')
+        //cron('H */4 * * 1-5') // Build periodically
+        pollSCM('H/10 * * * *') // Poll SCM
     }
     stages {
         stage('hello') {
