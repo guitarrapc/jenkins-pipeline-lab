@@ -31,14 +31,14 @@ pipeline {
             agent {
                 docker "ubuntu:18.04"
             }
-            options {
-                checkoutToSubdirectory '/repo'
-            }
+            options {skipDefaultCheckout()}
             steps {
+                step([$class: 'WsCleanup'])
                 checkout scm
+                sh "ls -la"
+                sh "hostname"
                 sh "pwd"
-                sh "ls /"
-                sh "ls /repo"
+                sh "touch hoge"
             }
         }
     }
