@@ -27,5 +27,19 @@ pipeline {
                 }
             }
         }
+        stage('checkout') {
+            agent {
+                docker "ubuntu:18.04"
+            }
+            options {
+                checkoutToSubdirectory '/repo'
+            }
+            steps {
+                checkout scm
+                sh "pwd"
+                sh "ls /"
+                sh "ls /repo"
+            }
+        }
     }
 }
