@@ -8,8 +8,9 @@ pipeline {
                 script{
                     echo "hello"
                     sh "cat /proc/version"
-                    //cat "/etc/lsb-release"
-                    // sh "uname -a"
+                    sh "cat /etc/lsb-release"
+                    sh "uname -a"
+                    // do not run like `cat /proc/version`. you will recieve cat not found.
                 }
             }
         }
