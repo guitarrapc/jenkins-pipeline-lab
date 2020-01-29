@@ -14,7 +14,7 @@ pipeline {
                 }
             }
         }
-        stage('alping') {
+        stage('alpine') {
             agent {
                 docker "alpine:latest"
             }
@@ -27,6 +27,5 @@ pipeline {
                 }
             }
         }
-
     }
 }
