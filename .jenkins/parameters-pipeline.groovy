@@ -5,7 +5,7 @@ pipeline {
         string(name: "version", description: "app version", defaultValue: "0.0.1", trim: true)
         text(name: "message", description: "text message", defaultValue: "long way run to the home")
         choice(name: "choice", choices: ["One", "Two", "Three"], description: "choice your favorite") // defaultValue is not allowed
-        password(name: "password", description: "choice your favorite", defaultValue: "SECRET")
+        password(name: "password", description: "your secret", defaultValue: "SECRET")
     }
     stages {
         stage('hello') {
