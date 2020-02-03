@@ -15,7 +15,7 @@ $ cat <<EOF >> ~/.jflintrc
   "password": "PASSWORD"
 }
 EOF
-$ jflint ./.jenkins/echo_pipeline.groovy
+$ jflint ./pipelines/echo_pipeline.groovy
 ```
 
 ## Pipeline Notes
