@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    string(name: "ref", defaultValue: "")
+    string(name: "ref", defaultValue: "default value")
   }
   triggers {
     GenericTrigger(
@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-        echo 'REF $ref'
+        echo "REF $ref"
       }
     }
   }
