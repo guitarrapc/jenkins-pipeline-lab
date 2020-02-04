@@ -64,7 +64,7 @@ pipeline {
       }
       steps {
         // will be skip on normal pipeline
-        echo "branch match to master"
+        echo "branch match on when"
       }
     }
   }
