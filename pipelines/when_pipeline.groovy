@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    string(name: "REGEX_TEXT", description: "regex test", defaultValue: "branch1", trim: true)
+  }
   environment {
     BASE = "pipeline"
   }
@@ -49,7 +52,7 @@ pipeline {
     stage('when regex match') {
       when {
         expression {
-          switch (env.BASE) {
+          switch (env.REGEX_TEXT) {
             case "master":
               return true
             case ~/^branch[\d]+$/:
