@@ -46,10 +46,18 @@ pipeline {
       }
     }
 
-    stage('when branch master') {
+    stage('when regex match') {
       when {
-        // only ran when multibranch pipeline. it will never trigger on normal pipeline.
-        branch "master"
+        expression {
+          switch (env.BASE) {
+            case "master":
+              return true
+            case ~/^branch[\d]+$/:
+              return true
+            default:
+              return false
+          }
+        }
       }
       steps {
         // will be skip on normal pipeline
