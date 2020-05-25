@@ -12,6 +12,11 @@ pipeline {
           sh "exit 1"
         }
       }
+      post {
+        failure {
+          echo "post failure: error happen"
+        }
+      }
     }
     stage('3.success') {
       steps {
