@@ -13,7 +13,7 @@ pipeline {
         }
       }
       post {
-        failure {
+        always {
           echo "post failure: error happen"
         }
       }
