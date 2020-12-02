@@ -21,7 +21,7 @@ pipeline {
               doGenerateSubmoduleConfigurations: false,
               extensions: [
                 [$class: 'CleanCheckout'], // clean before checkout
-                [$class: 'RelativeTargetDirectory', relativeTargetDir: "src/"], // checkout only when "src/"" folder has changes.
+                //[$class: 'RelativeTargetDirectory', relativeTargetDir: "src/"], // checkout to "src" folder
                 [$class: 'CloneOption', depth: 1, noTags: false, reference: '', shallow: true] // shallow clone with depth 1
               ],
               submoduleCfg: [],
@@ -33,8 +33,10 @@ pipeline {
     stage('build') {
       steps {
         sh "dotnet --version"
-        sh "pwd"
-        sh "ls -l"
+        sh """
+          pwd
+          ls -l
+        """
         dir("src/") {
           sh """
             pwd
