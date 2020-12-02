@@ -36,7 +36,7 @@ pipeline {
           poll: true, /*This is the important option to poll this repo change*/
           scm: [
               $class: 'GitSCM',
-              branches: [[name: "*/$env.BRANCH"]], // leave blank to check all branches
+              branches: [[name: "*/${BRANCH}"]], // leave blank to check all branches
               doGenerateSubmoduleConfigurations: false,
               extensions: [
                 [$class: 'CleanCheckout'], // clean before checkout
