@@ -16,6 +16,11 @@ pipeline {
     timestamps()
   }
   stages {
+    stage('spin up') {
+      steps {
+        sh "export"
+      }
+    }
     stage('checkout') {
       steps {
         checkout(
@@ -41,7 +46,15 @@ pipeline {
         sh "dotnet --version"
         sh "dotnet restore ./src/SkiaSharp.QrCode/"
         sh "dotnet build ./src/SkiaSharp.QrCode/ -c Debug"
-        sh "dotnet test ./tests/SkiaSharp.QrCode.Tests.net50.csproj	/ -c Debug"
+        sh "dotnet test ./tests/SkiaSharp.QrCode.Tests.net50/ -c Debug -p:CollectCoverage=true -p:CoverletOutputFormat=opencover"
+      }
+    }
+    stage('samples') {
+      steps {
+        sh "dotnet build ./samples/ManualGenerate/ -c Debug"
+        sh "dotnet run --project ./samples/ManualGenerate/ManualGenerate.csproj -c Debug -f net5.0"
+        sh "dotnet build ./samples/SimpleGenerate/ -c Debug"
+        sh "dotnet run --project ./samples/SimpleGenerate/SimpleGenerate.csproj -c Debug -f net5.0"
       }
     }
   }
