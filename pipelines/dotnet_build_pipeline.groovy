@@ -33,16 +33,9 @@ pipeline {
     stage('build') {
       steps {
         sh "dotnet --version"
-        sh """
-          pwd
-          ls -l
-        """
-        dir("src/") {
-          sh """
-            pwd
-            ls -l
-          """
-        }
+        sh "dotnet restore src/SkiaSharp.QrCore/"
+        sh "dotnet build src/SkiaSharp.QrCore/ -c Debug"
+        sh "dotnet test tests/SkiaSharp.QrCode.Tests.net50.csproj	/ -c Debug"
       }
     }
   }
