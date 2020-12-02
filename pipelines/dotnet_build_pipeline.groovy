@@ -39,9 +39,9 @@ pipeline {
     stage('build') {
       steps {
         sh "dotnet --version"
-        sh "dotnet restore src/SkiaSharp.QrCore/"
-        sh "dotnet build src/SkiaSharp.QrCore/ -c Debug"
-        sh "dotnet test tests/SkiaSharp.QrCode.Tests.net50.csproj	/ -c Debug"
+        sh "dotnet restore ./src/SkiaSharp.QrCode/"
+        sh "dotnet build ./src/SkiaSharp.QrCode/ -c Debug"
+        sh "dotnet test ./tests/SkiaSharp.QrCode.Tests.net50.csproj	/ -c Debug"
       }
     }
   }
