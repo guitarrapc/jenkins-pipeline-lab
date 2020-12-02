@@ -33,6 +33,8 @@ pipeline {
     stage('build') {
       steps {
         sh "dotnet --version"
+        sh "pwd"
+        sh "ls -l"
         dir("src/") {
           sh """
             pwd
