@@ -2,6 +2,14 @@ pipeline {
   agent {
     docker "mcr.microsoft.com/dotnet/sdk:5.0"
   }
+  // in case you don't want use Webhook, use SCM polling.
+  // this polling will trigger to all remoteACM Repository URLs associated with your build, including
+  // the URLs specified by checkout steps,
+  // the URL of your Declarative Pipeline script from SCM,
+  // and the URL of your Global Pipeline Libraries.
+  triggers {
+      pollSCM 'H/10 * * * *'
+  }
   parameters {
     string(name: 'BRANCH', defaultValue: 'master', description: 'GitHub branch to build.')
   }
