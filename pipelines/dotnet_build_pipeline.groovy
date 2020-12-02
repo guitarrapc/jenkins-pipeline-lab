@@ -5,6 +5,12 @@ pipeline {
   parameters {
     string(name: 'BRANCH', defaultValue: 'master', description: 'GitHub branch to build.')
   }
+  environment {
+    HOME = '/tmp' // prevent error when dotnet restore on docker. "Access to the path '/.dotnet' is denied. ---> System.IO.IOException: Permission denied"
+    DOTNET_CLI_TELEMETRY_OPTOUT = 1
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1
+    NUGET_XMLDOC_MODE = "skip"
+  }
   options {
     skipDefaultCheckout()
     timestamps()
